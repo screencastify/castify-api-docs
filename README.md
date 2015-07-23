@@ -69,3 +69,5 @@ screencastify.onSharedFiles = function(fileIds) {
 }
 ```
 
+## Demos:
+* [Simple API Demo](https://w69b.github.io/castify-api-docs/demos/simple/simple.html)
