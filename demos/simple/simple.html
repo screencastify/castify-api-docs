@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>Simple Screencastify API Demo</title>
+    <script src="https://www.screencastify.com/libs-api/castify-api.js"></script>
+    <style>
+      video {
+        max-width: 100%;
+        max-height: 100%;
+      }
+      .hidden {
+        display: none;
+      }
+      /*
+      * Just some simple show-hide logic
+      */
+      body.loading * {
+        display: none;
+      }
+      body.loading > .loadingSpinner {
+        display: block;
+      }
+      body:not(.loading) > .loadingSpinner {
+        display: none;
+      }
+      #connectStatus > * {
+        display: none;
+      }
+      #connectStatus.isConnected > .connected {
+        display: block;
+      }
+      #connectStatus:not(.isConnected) > .notConnected {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="loading">
+    <div class="loadingSpinner">Loading...</div>
+    <div id="connectStatus" class="hidden">
+      <div class="notConnected">
+        App is not connected with Screencastify.
+        <button id="connectBtn">Connect it!</button>
+      </div>
+      <div class="connected">
+        App is connected with Screencastify.
+        Use the Share button in Screencastify to share a file with this App.
+      </div>
+    </div>
+    <h2></h2>
+    <video autoplay controls></video>
+
+    <script>
+      screencastify.setAppId(6302638895267840);
+      var connectStatusEl = document.getElementById('connectStatus');
+
+      function playFile(fileId) {
+        return screencastify.getFile(fileId).then(function(fileInfo) {
+          var videoEl = document.querySelector('video');
+          console.log('playing file', fileInfo);
+          // fileInfo.file is a regular File/Blob.
+          videoEl.src = URL.createObjectURL(fileInfo.file);
+          document.querySelector('h2').innerText = fileInfo.title;
+          }, function(err) {
+            console.error('failed to load file', err);
+        });
+      }
+
+      function checkIfConnected() {
+        // Hide connect button if connected, show it else.
+        return screencastify.isAppConnected().then(function(isConnected) {
+          console.log('connected status', isConnected);
+          connectStatusEl.classList.remove('hidden');
+          connectStatusEl.classList.toggle('isConnected', isConnected);
+        });
+      }
+
+      function onConnectClicked() {
+        screencastify.connectApp().then(function() {
+          console.log('App is connected now');
+          connectStatusEl.classList.toggle('isConnected', true);
+          }, function(err) {
+            console.error('failed to connect App', err);
+        });
+      }
+
+      // The state query parameter is a json-encoded object that looks like this
+      // {
+      //  ids: ['shared-file-id']
+      // }
+      var state = screencastify.decodeStateQuery();
+      var loadingPromise;
+      if (state && state.ids && state.ids.length) {
+        loadingPromise = playFile(state.ids[0]);
+      } else {
+        loadingPromise = checkIfConnected();
+      }
+      loadingPromise.then(function() {
+        document.querySelector('body').classList.remove('loading');
+      });
+
+      document.getElementById('connectBtn')
+        .addEventListener('click', onConnectClicked);
+
+    </script>
+  </body>
+</html>
