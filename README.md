@@ -26,7 +26,8 @@ screencastify.isAppConnected().then(function(isConnected) {
 ```
 * To connect your App, call `screencastify.connectApp();` it returns a Promise
   that resolves on success. This opens a popup window, so only call this in
-  event handlers.
+  event handlers. It takes care of installing Screencastify first, if it is 
+not installed yet.
 
 * When a user shares a recording with an App, Screencastify opens the share URL
 configured for the App in a new tab and passes the shared file ids in a
