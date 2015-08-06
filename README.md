@@ -2,10 +2,14 @@
 API Documentation and Demos for Screencastify API.
 
 ### About
-The Screencastify API allows users to share recordings with third-party Applications.
+The Screencastify API allows users to share recordings with third-party Applications/Sites.
 It is a pure client-side API, recordings are passed to Apps as regular
 [File](https://developer.mozilla.org/en/docs/Web/API/File) objects (like a
 regular file upload).
+
+Screencastify can be configured to "Record for an App". This automatically shares
+new recordings with the configured App. It's the responsibilty of the App to handle 
+and store such recordings.
 
 ### Getting started
 * Configure a new App in the
@@ -54,7 +58,7 @@ screencastify.getFile('shared-file-id').then(function(fileInfo) {
 
 See demos for working examples.
 
-### Handling shared files in single tab.
+### Handling shared files in a single tab.
 By default Screencastify opens the configured share URL when a file is shared
 with an App. In some cases you might want to avoid having a separate tab opened
 each time a file is shared with your app, but handle the files in an already
