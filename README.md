@@ -11,6 +11,8 @@ Screencastify can be configured to "Record for an App". This automatically share
 new recordings with the configured App. It's the responsibilty of the App to handle 
 and store such recordings.
 
+[API Flow Demo Video](https://www.youtube.com/watch?v=eiverPn0Vb8)
+
 ### Getting started
 * Configure a new App in the
 [API Console](https://www.screencastify.com/user/api_console) to get an AppId.
