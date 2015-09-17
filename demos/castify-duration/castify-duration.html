@@ -1,0 +1,48 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!--
+An element to renders a duration in seconds as MM:SS string.
+-->
+<dom-module id="castify-duration">
+
+  <style>
+    :host {
+      display: inline-block;
+    }
+  </style>
+
+  <template>{{_format(seconds)}}</template>
+
+</dom-module>
+
+<script>
+  Polymer({
+
+    is: 'castify-duration',
+    properties: {
+      seconds: Number
+    },
+
+    /**
+     * Formats seconds as human time.
+     * @param {number=} seconds number of seconds.
+     * @return {string} HH:mm:ss string.
+     */
+    _format: function(seconds) {
+      if (typeof(seconds) !== 'number' || isNaN(seconds))
+        seconds = 0;
+      function pad(num) {
+        if (num < 10) return '0' + num;
+        else return num;
+      }
+
+      var sec = Math.floor(seconds % 60);
+      var min = Math.floor((seconds / 60) % 60);
+      var result = [pad(min), pad(sec)];
+      var hours = Math.floor(seconds / 3600);
+      if (hours)
+        result.unshift(hours);
+      return result.join(':');
+    }
+  });
+</script>

@@ -1,0 +1,58 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!--
+A element that handles shared files by showing them in a video element.
+-->
+<dom-module id="castify-share-player">
+
+  <style>
+    :host {
+      display: flex;
+    }
+
+    video {
+      width: 100%;
+    }
+  </style>
+
+  <template>
+    <video controls id="video" hidden></video>
+  </template>
+
+</dom-module>
+
+<script>
+
+  Polymer({
+
+    is: 'castify-share-player',
+
+    attached: function() {
+      var state = screencastify.decodeStateQuery();
+      if (state && state.ids && state.ids.length) {
+        this.playFile(state.ids);
+      }
+      if (screencastify.onSharedFiles)
+        throw new Error('There can only be one a screencastify.onSharedFiles handler');
+      screencastify.onSharedFiles = function(fileIds) {
+        this.playFile(fileIds);
+        return true;
+      }.bind(this);
+    },
+
+    dettached: function() {
+      delete screencastify.onSharedFiles;
+    },
+
+    playFile: function(fileIds) {
+      return screencastify.getFile(fileIds[0]).then(function(fileInfo) {
+        console.log('castify-share-player: playing file', fileInfo);
+        var video = this.$.video;
+        video.src = URL.createObjectURL(fileInfo.file);
+        video.removeAttribute('hidden');
+      }.bind(this));
+    }
+  });
+
+</script>
+

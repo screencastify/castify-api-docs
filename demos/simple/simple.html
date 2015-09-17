@@ -44,11 +44,12 @@
       </div>
       <div class="connected">
         App is connected with Screencastify.
-        Use the Share button in Screencastify to share a file with this App.
+        Use the Share button in Screencastify to share a file with this App,
+        or <button id="startBtn">Start recording from this site</button>
       </div>
     </div>
     <h2></h2>
-    <video autoplay controls></video>
+    <video hidden autoplay controls></video>
 
     <script>
       screencastify.setAppId(6302638895267840);
@@ -57,6 +58,7 @@
       function playFile(fileId) {
         return screencastify.getFile(fileId).then(function(fileInfo) {
           var videoEl = document.querySelector('video');
+          videoEl.removeAttribute('hidden');
           console.log('playing file', fileInfo);
           // fileInfo.file is a regular File/Blob.
           videoEl.src = URL.createObjectURL(fileInfo.file);
@@ -84,6 +86,15 @@
         });
       }
 
+      function onStartClicked() {
+        var recorder = new screencastify.Recorder();
+        recorder.start().then(function() {
+          console.log('recording started');
+        }, function(err) {
+          console.error('recorder.start() failed', err);
+        });
+      }
+
       // The state query parameter is a json-encoded object that looks like this
       // {
       //  ids: ['shared-file-id']
@@ -101,6 +112,9 @@
 
       document.getElementById('connectBtn')
         .addEventListener('click', onConnectClicked);
+
+      document.getElementById('startBtn')
+        .addEventListener('click', onStartClicked);
 
     </script>
   </body>
