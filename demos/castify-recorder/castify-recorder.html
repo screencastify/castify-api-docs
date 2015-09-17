@@ -1,0 +1,146 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-styles/color.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<link rel="import" href="../castify-start-button/castify-start-button.html">
+<link rel="import" href="../castify-icons/castify-icons.html">
+<link rel="import" href="../castify-duration/castify-duration.html">
+
+
+<!--
+An element providing a simple recorder UI.
+-->
+<dom-module id="castify-recorder">
+  <style>
+
+    :host {
+      @apply(--layout-horizontal);
+      @apply(--layout-center);
+    }
+
+    #duration {
+      padding: 8px;
+      text-align: center;
+    }
+
+    #start {
+      color: var(--castify-recorder-start-color);
+    }
+
+    :host(:not([state="inactive"])) #start {
+      display: none;
+    }
+
+    :host([state="inactive"]) #duration {
+      display: none;
+    }
+
+    :host(:not([state="recording"])) #pause {
+      display: none;
+    }
+
+    :host(:not([state="paused"])) #resume {
+      display: none;
+    }
+
+    :host(:not([state="recording"]):not([state="paused"])) #stop {
+      display: none;
+    }
+  </style>
+  <template>
+    <castify-duration id="duration"
+                      seconds="{{time}}"></castify-duration>
+    <paper-icon-button id="pause" icon="castify:pause"
+                       on-tap="pause"
+                       alt="pause recording"></paper-icon-button>
+    <paper-icon-button id="resume" icon="castify:resume"
+                       on-tap="resume"
+                       alt="resume recording"></paper-icon-button>
+    <paper-icon-button id="stop" icon="castify:stop"
+                       on-tap="stop"
+                       alt="stop recording"></paper-icon-button>
+    <castify-start-button id="start" on-start="start"></castify-start-button>
+  </template>
+  <em>{{_recorder.time}}</em>
+</dom-module>
+
+<script>
+
+  Polymer({
+
+    is: 'castify-recorder',
+    properties: {
+      /**
+       * Recorder state. This is set to the screencastify.Recorder
+       * state (a value out of ['inactive', 'paused', 'recording']).
+       */
+      state: {
+        type: String,
+        reflectToAttribute: true,
+        readOnly: true
+      },
+      time: {
+        type: Number,
+        readOnly: true
+      },
+      shareUrl: {
+        type: String,
+        value: location.href  // handle shared videos on same page
+      },
+      captureSource: {
+        type: String,
+        value: 'desktop'
+      },
+      micAudio: Boolean,
+      /**
+       * Enable system audio recording. Only supported on Windows.
+       */
+      systemAudio: Boolean,
+      payload: String
+    },
+
+    ready: function() {
+      this._recorder = new screencastify.Recorder();
+      // Publish state and time directly as element properties.
+      this._setState(this._recorder.state);
+      this._recorder.onStateChanged = function(state) {
+        this._setState(state);
+      }.bind(this);
+
+      this._setTime(this._recorder.time);
+      this._recorder.onTimeChanged = function(time) {
+        this._setTime(time);
+      }.bind(this);
+    },
+
+    start: function() {
+      this._recorder.start({
+        recordConfig: {
+          captureSource: this.captureSource,
+          audio: {
+            mic: this.micAudio,
+            system: this.systemAudio
+          }
+        },
+        shareUrl: this.shareUrl,
+        payload: this.payload
+      });
+    },
+
+    stop: function() {
+      this._recorder.stop();
+    },
+
+    pause: function() {
+      this._recorder.pause();
+    },
+
+    resume: function() {
+      this._recorder.resume();
+    }
+
+  });
+
+</script>

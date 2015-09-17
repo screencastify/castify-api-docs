@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Screencastify In-Site Recorder API Demo</title>
+  <script src="https://www.screencastify.com/libs-api/castify-api.js"></script>
+
+  <script src="../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="../bower_components/paper-styles/classes/global.html">
+  <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+
+  <link rel="import" href="../castify-recorder/castify-recorder.html">
+  <link rel="import" href="../castify-share-player/castify-share-player.html">
+
+  <style is="custom-style">
+    castify-recorder {
+      --castify-recorder-start-color: var(--accent-color);
+    }
+    paper-toolbar .title {
+      margin-left: 0 !important;
+    }
+    castify-share-player {
+      @apply(--layout-flex);
+    }
+  </style>
+  <script>
+    screencastify.setAppId(5129887237013504);
+  </script>
+</head>
+<body class="fullbleed layout vertical">
+  <paper-toolbar>
+      <span class="title">In-Site Recorder Demo</span>
+     <!-- Custom element with recorder control UI -->
+     <castify-recorder mic-audio="true" payload="some payload" capture-source="screen">
+     </castify-recorder>
+  </paper-toolbar>
+  <!-- Custom element that shows shared videos in a video tag-->
+  <castify-share-player></castify-share-player>
+</body>
+</html>

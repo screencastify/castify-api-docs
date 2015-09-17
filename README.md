@@ -8,7 +8,7 @@ It is a pure client-side API, recordings are passed to Apps as regular
 regular file upload).
 
 Screencastify can be configured to "Record for an App". This automatically shares
-new recordings with the configured App. It's the responsibilty of the App to handle 
+new recordings with the configured App. It's the responsibilty of the App to handle
 and store such recordings.
 
 [API Flow Demo Video](https://www.youtube.com/watch?v=jQMSXJE8O_s)
@@ -32,7 +32,7 @@ screencastify.isAppConnected().then(function(isConnected) {
 ```
 * To connect your App, call `screencastify.connectApp();` it returns a Promise
   that resolves on success. This opens a popup window, so only call this in
-  event handlers. It takes care of installing Screencastify first, if it is 
+  event handlers. It takes care of installing Screencastify first, if it is
 not installed yet.
 
 * When a user shares a recording with an App, Screencastify opens the share URL
@@ -53,6 +53,7 @@ screencastify.getFile('shared-file-id').then(function(fileInfo) {
   //   width: 800,  // undefined if unknown
   //   id: 'shared-file-id',
   //   title: 'Test Name'  // file title set by user
+  //   payload: 'some string '  // string set with recorder.start()
   // };
 });
 ```
@@ -75,6 +76,7 @@ screencastify.onSharedFiles = function(fileIds) {
   return true;
 }
 ```
+## [API Reference](API.md)
 
 ## Pricing
 This API can be used for free.
@@ -85,3 +87,4 @@ The restrictions of Screencastify Lite can be removed for a flat fee for all you
 
 ## Demos:
 * [Simple API Demo](https://w69b.github.io/castify-api-docs/demos/simple/simple.html)
+* [In-Site Recorder Demo](https://w69b.github.io/castify-api-docs/demos/in-site/in-site.html)

@@ -1,0 +1,68 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../castify-icons/castify-icons.html">
+
+<!--
+A simple to use start recording button.
+Shows a start recording button. The button is disabled while the App connection state is
+unclear. Clicking on the record button connects the app first, if it is not connected yet.
+It then fires a 'start' event. If the App is already connected it immediately fires a 'start'
+event.
+-->
+<dom-module id="castify-start-button">
+
+  <style>
+    :host {
+      display: inline-block;
+      box-sizing: border-box;
+      position: relative;
+    }
+  </style>
+
+  <template>
+    <paper-icon-button class="record" icon="castify:record"
+                       disabled$="[[loading]]"
+                       on-click="connectOrStart"
+                       alt="start recording"></paper-icon-button>
+  </template>
+
+</dom-module>
+
+<script>
+
+  Polymer({
+
+    is: 'castify-start-button',
+
+    ready: function() {
+      this._setLoading(true);
+      screencastify.isAppConnected().then(function(connected) {
+        this._setLoading(false);
+        this._isConnected = connected;
+      }.bind(this));
+    },
+
+    connectOrStart: function() {
+      if (this._isConnected) {
+        this.fire('start');
+      } else {
+        screencastify.connectApp().then(function() {
+          this._isConnected = true;
+          this.fire('start');
+        }.bind(this));
+      }
+    },
+
+    properties: {
+       /**
+       * True while connection state is still unclear.
+       */
+      loading: {
+        type: Boolean,
+        readOnly: true
+      }
+    }
+
+  });
+
+</script>
