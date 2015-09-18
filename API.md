@@ -7,6 +7,8 @@
     * [.Recorder()](#screencastify.Recorder)
       * [.state](#screencastify.Recorder+state) : <code>String</code>
       * [.state](#screencastify.Recorder+state) : <code>number</code>
+      * [.onStateChanged](#screencastify.Recorder+onStateChanged) : <code>function</code>
+      * [.onTimeChanged](#screencastify.Recorder+onTimeChanged) : <code>function</code>
       * [.start(config)](#screencastify.Recorder+start) ⇒ <code>Promise</code>
       * [.stop()](#screencastify.Recorder+stop) ⇒ <code>Promise</code>
       * [.pause()](#screencastify.Recorder+pause) ⇒ <code>Promise</code>
@@ -25,7 +27,7 @@
 
 <a name="screencastify.Recorder"></a>
 ### screencastify.Recorder()
-Recorder controller. Instances can attach
+Recorder controller.
 
 **Params**
 
@@ -33,6 +35,8 @@ Recorder controller. Instances can attach
   * [.Recorder()](#screencastify.Recorder)
     * [.state](#screencastify.Recorder+state) : <code>String</code>
     * [.state](#screencastify.Recorder+state) : <code>number</code>
+    * [.onStateChanged](#screencastify.Recorder+onStateChanged) : <code>function</code>
+    * [.onTimeChanged](#screencastify.Recorder+onTimeChanged) : <code>function</code>
     * [.start(config)](#screencastify.Recorder+start) ⇒ <code>Promise</code>
     * [.stop()](#screencastify.Recorder+stop) ⇒ <code>Promise</code>
     * [.pause()](#screencastify.Recorder+pause) ⇒ <code>Promise</code>
@@ -46,6 +50,28 @@ Current recorder state. String out of ['inactive', 'recording', 'paused'].
 #### recorder.state : <code>number</code>
 Current recorder time in seconds.
 
+<a name="screencastify.Recorder+onStateChanged"></a>
+#### recorder.onStateChanged : <code>function</code>
+Set this property to a function to get notified when the recorder state changed.
+It's called with the new state as the only argument.
+
+**Example**  
+```js
+recorder.onStateChanged = function(state) {
+   console.log('state changed to', state);
+ }
+```
+<a name="screencastify.Recorder+onTimeChanged"></a>
+#### recorder.onTimeChanged : <code>function</code>
+Set this property to a function to get notified when the recorder time changed.
+It's called with the new time as the only argument.
+
+**Example**  
+```js
+recorder.onTimeChanged = function(time) {
+   console.log('time changed to', time);
+ }
+```
 <a name="screencastify.Recorder+start"></a>
 #### recorder.start(config) ⇒ <code>Promise</code>
 Start recording.
