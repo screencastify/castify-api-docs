@@ -17,7 +17,7 @@
     * [.getFile(fileId)](#screencastify.getFile) ⇒ <code>Promise</code>
     * [.connectApp()](#screencastify.connectApp) ⇒ <code>Promise</code>
     * [.isBrowserSupported()](#screencastify.isBrowserSupported) ⇒ <code>boolean</code>
-    * [.isInstalled()](#screencastify.isInstalled) ⇒ <code>String</code>
+    * [.isInstalled()](#screencastify.isInstalled) ⇒ <code>Promise</code>
     * [.decodeStateQuery([search])](#screencastify.decodeStateQuery) ⇒ <code>Object</code>
     * [.setAppId(id)](#screencastify.setAppId)
   * _inner_
@@ -148,10 +148,10 @@ Check if browser is supported.
 
 **Returns**: <code>boolean</code> - true if supported.  
 <a name="screencastify.isInstalled"></a>
-### screencastify.isInstalled() ⇒ <code>String</code>
+### screencastify.isInstalled() ⇒ <code>Promise</code>
 Check if extension is installed.
 
-**Returns**: <code>String</code> - version if installed, false else.  
+**Returns**: <code>Promise</code> - that resolves with a version string if installed, false else.  
 <a name="screencastify.decodeStateQuery"></a>
 ### screencastify.decodeStateQuery([search]) ⇒ <code>Object</code>
 Get decoded state query parameter.
