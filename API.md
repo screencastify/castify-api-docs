@@ -6,7 +6,7 @@
   * _static_
     * [.Recorder()](#screencastify.Recorder)
       * [.state](#screencastify.Recorder+state) : <code>String</code>
-      * [.state](#screencastify.Recorder+state) : <code>number</code>
+      * [.time](#screencastify.Recorder+time) : <code>number</code>
       * [.onStateChanged](#screencastify.Recorder+onStateChanged) : <code>function</code>
       * [.onTimeChanged](#screencastify.Recorder+onTimeChanged) : <code>function</code>
       * [.start(config)](#screencastify.Recorder+start) ⇒ <code>Promise</code>
@@ -34,7 +34,7 @@ Recorder controller.
 
   * [.Recorder()](#screencastify.Recorder)
     * [.state](#screencastify.Recorder+state) : <code>String</code>
-    * [.state](#screencastify.Recorder+state) : <code>number</code>
+    * [.time](#screencastify.Recorder+time) : <code>number</code>
     * [.onStateChanged](#screencastify.Recorder+onStateChanged) : <code>function</code>
     * [.onTimeChanged](#screencastify.Recorder+onTimeChanged) : <code>function</code>
     * [.start(config)](#screencastify.Recorder+start) ⇒ <code>Promise</code>
@@ -46,8 +46,8 @@ Recorder controller.
 #### recorder.state : <code>String</code>
 Current recorder state. String out of ['inactive', 'recording', 'paused'].
 
-<a name="screencastify.Recorder+state"></a>
-#### recorder.state : <code>number</code>
+<a name="screencastify.Recorder+time"></a>
+#### recorder.time : <code>number</code>
 Current recorder time in seconds.
 
 <a name="screencastify.Recorder+onStateChanged"></a>
@@ -86,7 +86,7 @@ var recorder = new screencastify.Recorder();
 recorder.start({
     shareUrl: location.href,  // handle shared file on same page
     payload: 'some string',
-    recordingConfig: {
+    recordConfig: {
       audio: {mic: true}
     }
   }).then(function() {
