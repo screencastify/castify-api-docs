@@ -14,6 +14,8 @@
       * [.pause()](#screencastify.Recorder+pause) ⇒ <code>Promise</code>
       * [.resume()](#screencastify.Recorder+resume) ⇒ <code>Promise</code>
     * [.isAppConnected()](#screencastify.isAppConnected) ⇒ <code>Promise</code>
+    * [.setUserExpiryDate(date)](#screencastify.setUserExpiryDate) ⇒ <code>Promise</code>
+    * [.setUserShareUrl(url)](#screencastify.setUserShareUrl) ⇒ <code>Promise</code>
     * [.getFile(fileId)](#screencastify.getFile) ⇒ <code>Promise</code>
     * [.connectApp()](#screencastify.connectApp) ⇒ <code>Promise</code>
     * [.isBrowserSupported()](#screencastify.isBrowserSupported) ⇒ <code>boolean</code>
@@ -114,6 +116,29 @@ Check if App is connected. Returns false if platform is unsupported or extension
 installed.
 
 **Returns**: <code>Promise</code> - that resolves with boolean result.  
+<a name="screencastify.setUserExpiryDate"></a>
+### screencastify.setUserExpiryDate(date) ⇒ <code>Promise</code>
+Set expiry date for user of paid App.
+If you set the expiry date to zero (or null), the paid version will never expire for the
+current user. This is the default value for all users.
+For any other number, the user will fall back to the trial version after the expiry date.
+Calling this function for a free app always fails.
+
+**Returns**: <code>Promise</code> - resolves when done.  
+**Params**
+- date <code>Number</code> - date in ms since 1 January 1970 00:00:00 UTC or null.
+
+<a name="screencastify.setUserShareUrl"></a>
+### screencastify.setUserShareUrl(url) ⇒ <code>Promise</code>
+Set default shareUrl for the current user. If set, the provided url overrides the shareUrl
+configured in the API console for the current user.
+Setting the url to null reverts the default shareUrl to the value configured in the API
+console.
+
+**Returns**: <code>Promise</code> - resolves when done.  
+**Params**
+- url <code>String</code> - shareUrl for current user or null.
+
 <a name="screencastify.getFile"></a>
 ### screencastify.getFile(fileId) ⇒ <code>Promise</code>
 Get metadata of given file id.
