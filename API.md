@@ -16,6 +16,7 @@
     * [.isAppConnected()](#screencastify.isAppConnected) ⇒ <code>Promise</code>
     * [.setUserExpiryDate(date)](#screencastify.setUserExpiryDate) ⇒ <code>Promise</code>
     * [.setUserShareUrl(url)](#screencastify.setUserShareUrl) ⇒ <code>Promise</code>
+    * [.storeFileInLibrary(fileId, [openFile])](#screencastify.storeFileInLibrary) ⇒ <code>Promise</code>
     * [.getFile(fileId)](#screencastify.getFile) ⇒ <code>Promise</code>
     * [.connectApp()](#screencastify.connectApp) ⇒ <code>Promise</code>
     * [.isBrowserSupported()](#screencastify.isBrowserSupported) ⇒ <code>boolean</code>
@@ -139,6 +140,18 @@ console.
 **Params**
 - url <code>String</code> - shareUrl for current user or null.
 
+<a name="screencastify.storeFileInLibrary"></a>
+### screencastify.storeFileInLibrary(fileId, [openFile]) ⇒ <code>Promise</code>
+Store given file in Screencastify user library.
+By default recordings initiated via the API, or automatically shared recordings are not
+shown in the users "Your Recordings" library.
+Call this function to store such a recording there.
+
+**Returns**: <code>Promise</code> - resolves when done.  
+**Params**
+- fileId <code>String</code> - file id.
+- [openFile] <code>boolean</code> - open file in Screencastify when done.
+
 <a name="screencastify.getFile"></a>
 ### screencastify.getFile(fileId) ⇒ <code>Promise</code>
 Get metadata of given file id.
@@ -156,8 +169,9 @@ screencastify.getFile('shared-file-id').then(function(fileInfo) {
   height: 600,  // undefined if unknown
   width: 800,  // undefined if unknown
   id: 'shared-file-id',
-  title: 'Test Name'  // file title set by user
-  payload: 'some string '  // string set with recorder.start()
+  title: 'Test Name',  // file title set by user
+  payload: 'some string',  // string set with recorder.start()
+  inLibrary: false  // whether file is stored in user library
 });
 ```
 <a name="screencastify.connectApp"></a>
