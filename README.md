@@ -119,7 +119,7 @@ Lite apply (max recording length 10 min., branded videos).
 
 ### Flat pricing
 The restrictions of Screencastify Lite can be removed for a flat fee for all your users. Contact
-info@screencastify.com for details.
+sales@screencastify.com for details.
 
 ## Demos:
 * [Simple API Demo](https://w69b.github.io/castify-api-docs/demos/simple/simple.html)
