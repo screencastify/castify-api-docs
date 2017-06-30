@@ -16,7 +16,7 @@ This is a pure client-side API, recordings are passed to Apps as regular
 [File](https://developer.mozilla.org/en/docs/Web/API/File) objects (like from
 a file picker) locally.
 
-#### Controlling recording form the site
+#### Controlling recording from the site
 The recording API allows to initiate and control record from a site. To get an idea how this
 works, try the
 [In-Site Recorder Demo.](https://w69b.github.io/castify-api-docs/demos/in-site/in-site.html)
@@ -56,7 +56,7 @@ JSON-encoded `state` query parameter:
 screencastify.decodeStateQuery();
 > {ids: ['shared-file-id']}
 ```
-* Retrive shared file from Screencastify:
+* Retrieve shared file from Screencastify:
 ```javascript
 screencastify.getFile('shared-file-id').then(function(fileInfo) {
   // fileInfo = {
@@ -119,7 +119,7 @@ Lite apply (max recording length 10 min., branded videos).
 
 ### Flat pricing
 The restrictions of Screencastify Lite can be removed for a flat fee for all your users. Contact
-info@screencastify.com for details.
+sales@screencastify.com for details.
 
 ## Demos:
 * [Simple API Demo](https://w69b.github.io/castify-api-docs/demos/simple/simple.html)
