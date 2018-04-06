@@ -1,5 +1,5 @@
 # ![](screencastify-logo-large.png)Pricing
-[About](README.md) / [Getting started](getting_started.md) / [API Reference](API.md) / [Demos](demos.md) / [**Pricing**](pricing.md)
+[About](README.md) / [Getting started](getting_started.md) / [API](API.md) / [Demos](demos.md) / [**Pricing**](pricing.md)
 
 This API can be used for free.
 For recordings made by users that did not purchase Screencastify, restrictions of Screencastify

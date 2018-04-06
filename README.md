@@ -1,5 +1,5 @@
 # ![](screencastify-logo-large.png)Overview
-[**About**](README.md) / [Getting started](getting_started.md) / [API Reference](API.md) / [Demos](demos.md) / [Pricing](pricing.md)
+[**About**](README.md) / [Getting started](getting_started.md) / [API](API.md) / [Demos](demos.md) / [Pricing](pricing.md)
 
 
 The Screencastify API allows users to share recordings with third-party Applications/Sites from

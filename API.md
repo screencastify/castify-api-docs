@@ -1,5 +1,5 @@
 # ![](screencastify-logo-large.png)API Reference
-[About](README.md) / [Getting started](getting_started.md) / [**API Reference**](API.md) / [Demos](demos.md) / [Pricing](pricing.md)
+[About](README.md) / [Getting started](getting_started.md) / [**API**](API.md) / [Demos](demos.md) / [Pricing](pricing.md)
 <a name="screencastify"></a>
 
 [screencastify](#screencastify)
