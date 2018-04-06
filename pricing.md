@@ -1,4 +1,4 @@
-# Pricing
+# ![](screencastify-logo-large.png)Pricing
 [About](README.md) / [Getting started](getting_started.md) / [API Reference](API.md) / [Demos](demos.md) / [**Pricing**](pricing.md)
 
 This API can be used for free.

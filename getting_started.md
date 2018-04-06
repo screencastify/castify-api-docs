@@ -1,4 +1,4 @@
-# Getting started
+# ![](screencastify-logo-large.png)Getting started
 [About](README.md) / [**Getting started**](getting_started.md) / [API Reference](API.md) / [Demos](demos.md) / [Pricing](pricing.md)
 * Configure a new App in the
 [API Console](https://www.screencastify.com/user/api_console) to get an AppId. If you only want
