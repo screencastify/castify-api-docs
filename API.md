@@ -1,45 +1,44 @@
 # API Reference
 <a name="screencastify"></a>
 
-## screencastify
-
-* [screencastify](#screencastify)
-    * _static_
-        * [.isAppConnected](#screencastify.isAppConnected) ⇒ <code>Promise</code>
-        * [.setUserExpiryDate](#screencastify.setUserExpiryDate) ⇒ <code>Promise</code>
-        * [.setUserShareUrl](#screencastify.setUserShareUrl) ⇒ <code>Promise</code>
-        * [.storeFileInLibrary](#screencastify.storeFileInLibrary) ⇒ <code>Promise</code>
-        * [.getFile](#screencastify.getFile) ⇒ <code>Promise</code>
-        * [.connectApp](#screencastify.connectApp) ⇒ <code>Promise</code>
-        * [.isInstalled](#screencastify.isInstalled) ⇒ <code>Promise</code>
-        * [.Recorder()](#screencastify.Recorder)
-            * [.state](#screencastify.Recorder+state) : <code>String</code>
-            * [.time](#screencastify.Recorder+time) : <code>number</code>
-            * [.onStateChanged](#screencastify.Recorder+onStateChanged) : <code>function</code>
-            * [.onTimeChanged](#screencastify.Recorder+onTimeChanged) : <code>function</code>
-            * [.start](#screencastify.Recorder+start) ⇒ <code>Promise</code>
-            * [.stop](#screencastify.Recorder+stop) ⇒ <code>Promise</code>
-            * [.pause](#screencastify.Recorder+pause) ⇒ <code>Promise</code>
-            * [.resume](#screencastify.Recorder+resume) ⇒ <code>Promise</code>
-        * [.isBrowserSupported()](#screencastify.isBrowserSupported) ⇒ <code>boolean</code>
-        * [.decodeStateQuery([search])](#screencastify.decodeStateQuery) ⇒ <code>Object</code>
-        * [.setAppId(id)](#screencastify.setAppId)
-    * _inner_
-        * [~AudioConfig](#screencastify..AudioConfig) : <code>Object</code>
-        * [~SizeConfig](#screencastify..SizeConfig) : <code>Object</code>
-        * [~RecordConfig](#screencastify..RecordConfig) : <code>Object</code>
-        * [~StartConfig](#screencastify..StartConfig) : <code>Object</code>
-
+[screencastify](#screencastify)
+  * _static_
+      * [.isAppConnected](#screencastify.isAppConnected) ⇒ <code>Promise</code>
+      * [.setUserExpiryDate](#screencastify.setUserExpiryDate) ⇒ <code>Promise</code>
+      * [.setUserShareUrl](#screencastify.setUserShareUrl) ⇒ <code>Promise</code>
+      * [.storeFileInLibrary](#screencastify.storeFileInLibrary) ⇒ <code>Promise</code>
+      * [.getFile](#screencastify.getFile) ⇒ <code>Promise</code>
+      * [.connectApp](#screencastify.connectApp) ⇒ <code>Promise</code>
+      * [.isInstalled](#screencastify.isInstalled) ⇒ <code>Promise</code>
+      * [.Recorder()](#screencastify.Recorder)
+          * [.state](#screencastify.Recorder+state) : <code>String</code>
+          * [.time](#screencastify.Recorder+time) : <code>number</code>
+          * [.onStateChanged](#screencastify.Recorder+onStateChanged) : <code>function</code>
+          * [.onTimeChanged](#screencastify.Recorder+onTimeChanged) : <code>function</code>
+          * [.start](#screencastify.Recorder+start) ⇒ <code>Promise</code>
+          * [.stop](#screencastify.Recorder+stop) ⇒ <code>Promise</code>
+          * [.pause](#screencastify.Recorder+pause) ⇒ <code>Promise</code>
+          * [.resume](#screencastify.Recorder+resume) ⇒ <code>Promise</code>
+      * [.isBrowserSupported()](#screencastify.isBrowserSupported) ⇒ <code>boolean</code>
+      * [.decodeStateQuery([search])](#screencastify.decodeStateQuery) ⇒ <code>Object</code>
+      * [.setAppId(id)](#screencastify.setAppId)
+  * _inner_
+      * [~AudioConfig](#screencastify..AudioConfig) : <code>Object</code>
+      * [~SizeConfig](#screencastify..SizeConfig) : <code>Object</code>
+      * [~RecordConfig](#screencastify..RecordConfig) : <code>Object</code>
+      * [~StartConfig](#screencastify..StartConfig) : <code>Object</code>
 <a name="screencastify.isAppConnected"></a>
+## screencastify.isAppConnected ⇒ <code>Promise</code>
+___
 
-### screencastify.isAppConnected ⇒ <code>Promise</code>
 Check if App is connected. Returns false if platform is unsupported or extension not
 installed.
 
 **Returns**: <code>Promise</code> - that resolves with boolean result.  
 <a name="screencastify.setUserExpiryDate"></a>
+## screencastify.setUserExpiryDate ⇒ <code>Promise</code>
+___
 
-### screencastify.setUserExpiryDate ⇒ <code>Promise</code>
 Set expiry date for user of paid App.
 If you set the expiry date to zero (or null), the paid version will never expire for the
 current user. This is the default value for all users.
@@ -50,10 +49,10 @@ Calling this function for a free app always fails.
 **Params**
 
 - date <code>Number</code> - date in ms since 1 January 1970 00:00:00 UTC or null.
-
 <a name="screencastify.setUserShareUrl"></a>
 
-### screencastify.setUserShareUrl ⇒ <code>Promise</code>
+## screencastify.setUserShareUrl ⇒ <code>Promise</code>
+___
 Set default shareUrl for the current user. If set, the provided url overrides the shareUrl
 configured in the API console for the current user.
 Setting the url to null reverts the default shareUrl to the value configured in the API
@@ -63,10 +62,10 @@ console.
 **Params**
 
 - url <code>String</code> - shareUrl for current user or null.
-
 <a name="screencastify.storeFileInLibrary"></a>
 
-### screencastify.storeFileInLibrary ⇒ <code>Promise</code>
+## screencastify.storeFileInLibrary ⇒ <code>Promise</code>
+___
 Store given file in Screencastify user library.
 By default recordings initiated via the API, or automatically shared recordings are not
 shown in the users "Your Recordings" library.
@@ -77,10 +76,10 @@ Call this function to store such a recording there.
 
 - fileId <code>String</code> - file id.
 - [openFile] <code>boolean</code> - open file in Screencastify when done.
-
 <a name="screencastify.getFile"></a>
 
-### screencastify.getFile ⇒ <code>Promise</code>
+## screencastify.getFile ⇒ <code>Promise</code>
+___
 Get metadata of given file id.
 
 **Returns**: <code>Promise</code> - resolves with object.  
@@ -104,7 +103,8 @@ screencastify.getFile('shared-file-id').then(function(fileInfo) {
 ```
 <a name="screencastify.connectApp"></a>
 
-### screencastify.connectApp ⇒ <code>Promise</code>
+## screencastify.connectApp ⇒ <code>Promise</code>
+___
 Connect your App to Screencastify.
 This opens a popup window, so only call this in event handlers.
 It takes care of installing Screencastify first, if it is not installed yet.
@@ -112,13 +112,16 @@ It takes care of installing Screencastify first, if it is not installed yet.
 **Returns**: <code>Promise</code> - it returns a Promise that resolves on success or rejects on error.  
 <a name="screencastify.isInstalled"></a>
 
-### screencastify.isInstalled ⇒ <code>Promise</code>
+## screencastify.isInstalled ⇒ <code>Promise</code>
+___
 Check if extension is installed.
 
 **Returns**: <code>Promise</code> - that resolves with a version string if installed, false else.  
+
 <a name="screencastify.Recorder"></a>
 
-### screencastify.Recorder()
+## screencastify.Recorder()
+___
 Recorder controller.
 
 
@@ -134,17 +137,17 @@ Recorder controller.
 
 <a name="screencastify.Recorder+state"></a>
 
-#### recorder.state : <code>String</code>
+### recorder.state : <code>String</code>
 Current recorder state. String out of ['inactive', 'recording', 'paused'].
 
 <a name="screencastify.Recorder+time"></a>
 
-#### recorder.time : <code>number</code>
+### recorder.time : <code>number</code>
 Current recorder time in seconds.
 
 <a name="screencastify.Recorder+onStateChanged"></a>
 
-#### recorder.onStateChanged : <code>function</code>
+### recorder.onStateChanged : <code>function</code>
 Set this property to a function to get notified when the recorder state changed.
 It's called with the new state as the only argument.
 
@@ -156,7 +159,7 @@ recorder.onStateChanged = function(state) {
 ```
 <a name="screencastify.Recorder+onTimeChanged"></a>
 
-#### recorder.onTimeChanged : <code>function</code>
+### recorder.onTimeChanged : <code>function</code>
 Set this property to a function to get notified when the recorder time changed.
 It's called with the new time as the only argument.
 
@@ -168,7 +171,7 @@ recorder.onTimeChanged = function(time) {
 ```
 <a name="screencastify.Recorder+start"></a>
 
-#### recorder.start ⇒ <code>Promise</code>
+### recorder.start ⇒ <code>Promise</code>
 Start recording.
 
 **Returns**: <code>Promise</code> - resolves when recording has been started / rejects on errors.  
@@ -211,31 +214,33 @@ recorder.start({
 ```
 <a name="screencastify.Recorder+stop"></a>
 
-#### recorder.stop ⇒ <code>Promise</code>
+### recorder.stop ⇒ <code>Promise</code>
 Stop recording.
 
 **Returns**: <code>Promise</code> - resolves when recording has been stopped / rejects on errors.  
 <a name="screencastify.Recorder+pause"></a>
 
-#### recorder.pause ⇒ <code>Promise</code>
+### recorder.pause ⇒ <code>Promise</code>
 Pause recording.
 
 **Returns**: <code>Promise</code> - resolves when recording has been paused / rejects on errors.  
 <a name="screencastify.Recorder+resume"></a>
 
-#### recorder.resume ⇒ <code>Promise</code>
+### recorder.resume ⇒ <code>Promise</code>
 Resume recording after it has been paused.
 
 **Returns**: <code>Promise</code> - resolves when recording has been resumed / rejects on errors.  
 <a name="screencastify.isBrowserSupported"></a>
 
-### screencastify.isBrowserSupported() ⇒ <code>boolean</code>
+## screencastify.isBrowserSupported() ⇒ <code>boolean</code>
+___
 Check if browser is supported.
 
 **Returns**: <code>boolean</code> - true if supported.  
 <a name="screencastify.decodeStateQuery"></a>
 
-### screencastify.decodeStateQuery([search]) ⇒ <code>Object</code>
+## screencastify.decodeStateQuery([search]) ⇒ <code>Object</code>
+___
 Get decoded state query parameter.
 
 **Returns**: <code>Object</code> - decoded state object or null.  
@@ -245,7 +250,8 @@ Get decoded state query parameter.
 
 <a name="screencastify.setAppId"></a>
 
-### screencastify.setAppId(id)
+## screencastify.setAppId(id)
+___
 Set your AppId (as shown in the API Console on screencastify.com) before using any other
 library function.
 
@@ -259,7 +265,8 @@ screencastify.setAppId(YOUR_APP_ID);
 ```
 <a name="screencastify..AudioConfig"></a>
 
-### screencastify~AudioConfig : <code>Object</code>
+## screencastify~AudioConfig : <code>Object</code>
+___
 Recording options
 
 **Properties**
@@ -269,7 +276,8 @@ Recording options
 
 <a name="screencastify..SizeConfig"></a>
 
-### screencastify~SizeConfig : <code>Object</code>
+## screencastify~SizeConfig : <code>Object</code>
+___
 Size config object
 
 **Properties**
@@ -279,7 +287,8 @@ Size config object
 
 <a name="screencastify..RecordConfig"></a>
 
-### screencastify~RecordConfig : <code>Object</code>
+## screencastify~RecordConfig : <code>Object</code>
+___
 Recording options
 
 **Properties**
@@ -300,7 +309,8 @@ setting in the extension.
 
 <a name="screencastify..StartConfig"></a>
 
-### screencastify~StartConfig : <code>Object</code>
+## screencastify~StartConfig : <code>Object</code>
+___
 Start recording configuration.
 
 **Properties**

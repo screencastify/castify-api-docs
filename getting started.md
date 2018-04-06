@@ -49,7 +49,7 @@ screencastify.getFile('shared-file-id').then(function(fileInfo) {
 See demos for working examples.
 
 ## Handling shared files in a single tab.
-=========================================
+_________________________________________
 By default Screencastify opens the configured share URL when a file is shared
 with an App. In some cases you might want to avoid having a separate tab opened
 each time a file is shared with your app, but handle the files in an already
@@ -66,7 +66,7 @@ screencastify.onSharedFiles = function(fileIds) {
 ```
 
 ## Controlling recording
-========================
+________________________
 Initiating recording is only available for desktop recording mode (not for cam or tab recording).
 ```javascript
 var recorder = new screencastify.Recorder();
