@@ -1,13 +1,12 @@
-# API Documentation and Demos for Screencastify API.
-[About](README.md)/[Getting started](getting started.md)[API Reference](API.md)/[Demos](demos.md)/[Pricing](pricing.md)
+# Overview
+[**About**](README.md) / [Getting started](getting_started.md) / [API Reference](API.md) / [Demos](demos.md) / [Pricing](pricing.md)
 
-### About
-=========
+___
 The Screencastify API allows users to share recordings with third-party Applications/Sites from
 within Screencastify or (optionally) control recording from the site.
 
-#### Sharing from within Screencastify
-======================================
+## Sharing from within Screencastify
+___
 Apps are shown as an additional upload target in Screencastify's share dialog.
 
 Screencastify can also be configured to "Record for an App". This automatically shares
@@ -19,8 +18,8 @@ This is a pure client-side API, recordings are passed to Apps as regular
 [File](https://developer.mozilla.org/en/docs/Web/API/File) objects (like from
 a file picker) locally.
 
-#### Controlling recording from the site
-========================================
+## Controlling recording from the site
+___
 The recording API allows to initiate and control record from a site. To get an idea how this
 works, try the
 [In-Site Recorder Demo.](https://w69b.github.io/castify-api-docs/demos/in-site/in-site.html)

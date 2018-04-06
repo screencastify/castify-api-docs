@@ -1,4 +1,5 @@
 # API Reference
+[About](README.md) / [Getting started](getting_started.md) / [**API Reference**](API.md) / [Demos](demos.md) / [Pricing](pricing.md)
 <a name="screencastify"></a>
 
 [screencastify](#screencastify)
