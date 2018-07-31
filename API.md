@@ -307,6 +307,8 @@ pixels ([64, 4096] for both dimensions). Note that this is an upper limit, the a
 resolution will scaled to fit into the given size. So it will usually be
 lower, depending on the actual, native screen resolution. Defaults to the user
 setting in the extension.  
+- audibleCountdown <code>boolean</code> - Enable audio countdown. Defaults to true.
+- visualCountdown <code>boolean</code> - Enable visual countdown on drawing tools. Defaults to true. 
 
 <a name="screencastify..StartConfig"></a>
 
