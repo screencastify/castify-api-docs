@@ -1,3 +1,7 @@
+# Note: this API is no longer supported as of April 1st, 2021.
+
+
+
 # ![](screencastify-logo-large.png)Overview
 [**About**](README.md) / [Getting started](GETTING_STARTED.md) / [API](API.md) / [Demos](DEMOS.md) / [Pricing](PRICING.md)
 
